@@ -1,117 +1,53 @@
+
 using System;
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+public class programa
+{
+    public static void Main(string[] args)
+    {
+        /* crea un programa que simule un sistemas de inicios de seccion el usuario debe ingresar un correo con dominio unicaribe.edu.co y su contraseña el 
+          usuario tendra como datos correctos:
+         
+        usuario: youremail.unicaribe.edu.co 
+        contraseña: ny12345@
 
-namespace sistemas2
-      {
-    internal class Program
-            {
-        static void Main(string[] args)
+        - el programa debe de permitir maximo 3 intentos, si los datos son correctos debe de mostrar " Bienvenido a la plataforma de UNICARIBE "
+        - Despues de 3 intentos incorrectos, debe mostrar 
+        "usuario Bloqueado - Comunicate con T.I UNICARIBE 
+        */
+
+        string correoCorrecto = "robinsonmelendez@unicaribe.edu.co";
+        string passCorrecta = "robinsonmelendez@";
+
+        string email = "";
+        string pass = "";
+
+        int intentos = 0;
+        while (intentos < 3)
         {
-            int cantidadArchivos = 0;
-            do
+            Console.WriteLine("Ingrese su correo");
+            email = Console.ReadLine();
+
+            Console.WriteLine("Ingrese la contraseña");
+            pass = Console.ReadLine();
+
+            if (email == correoCorrecto && pass == passCorrecta)
             {
-                Console.WriteLine("Ingrese la cantidad de archivos a descargar: ");
-
-                
-                if (!int.TryParse(Console.ReadLine(), out cantidadArchivos))
-                {
-                    cantidadArchivos = 0;
-                }
-            } while (cantidadArchivos <= 0);
-
-
-            
-
-            
-            double espacioDisponible = 0;
-            do
+                Console.WriteLine("!!BIENVENIDO A LA PLATAFORMA DE UNICARIBE¡¡");
+                break;
+            }
+            else
             {
-                Console.WriteLine("Ingrese el espacio total disponible en disco (MB): ");
-                if (!double.TryParse(Console.ReadLine(), out espacioDisponible))
-                {
-                    espacioDisponible = 0;
-
-                    
-                }
-            } while (espacioDisponible <= 0);
-
-            int archivosDescargados = 0;
-            double totalMB = 0;
-
-            for (int i = 1; i <= cantidadArchivos; i++)
+                intentos++;
+                Console.WriteLine("Correo o contrraseña INCORRECTOS!!");
+                Console.WriteLine("Intentos Restantes: " + (3 - intentos));
+            }
+            if (intentos == 3)
             {
-                Console.WriteLine($"\nArchivo #{i} - Nombre (escriba 'salir' para detener): ");
-                string nombre = Console.ReadLine().Trim();
-
-                if (nombre.ToLower() == "salir")
-                {
-                    Console.WriteLine(">> Proceso de descarga cancelado!!!");
-                    break;
-                }
-
-                // 2. Validar el nombre del archivo (vacío o más de 20 caracteres)
-                if (string.IsNullOrEmpty(nombre) || nombre.Length > 20)
-                {
-                    Console.WriteLine(">> Nombre de archivo inválido. Omitido.");
-                    continue;
-                }
-
-                Console.WriteLine("Tamaño en MB: ");
-                double tamanio = 0;
-
-                if (!double.TryParse(Console.ReadLine(), out tamanio) || tamanio <= 0)
-                {
-                    Console.WriteLine(">> Tamaño inválido. Archivo omitido");
-                    continue;
-                }
-                if (tamanio > espacioDisponible)
-                {
-                    Console.WriteLine(">> Espacio insuficiente en disco. Descarga detenida.");
-                    break;
-                }
-
-            
-                espacioDisponible -= tamanio;
-
-                string categoria = "";
-                if (tamanio < 1)
-                {
-                    categoria = "Pequeño";
-                }
-                else if (tamanio <= 10)
-                {
-                    categoria = "Mediano";
-                }
-                else
-                {
-                    categoria = "Grande";
-                }
-
-                Console.WriteLine($">> Descargando '{nombre}' ({tamanio} MB) - Categoría: {categoria}... OK");
-
-                archivosDescargados++;
-                totalMB += tamanio;
+                Console.WriteLine("Usuario bloqueado - por favor comunicate con T.I ");
             }
 
-
-
-            
-            Console.WriteLine("\n======= RESUMEN DE DESCARGA =======");
-            
-            Console.WriteLine($"Archivos Descargados: {archivosDescargados}");
-
-            
-            Console.WriteLine($"Total descargado: {totalMB} MB");
-
-            
-            Console.WriteLine($"Espacio restante en disco: {espacioDisponible} MB");
-
-            
-            Console.WriteLine("===================================================");
         }
+
     }
 }
