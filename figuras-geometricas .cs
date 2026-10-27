@@ -3,7 +3,24 @@ using System;
 class Program
 {
     static void Main()
-    { 
+    {
+        int opcion;
+
+        do
+        {
+            Console.WriteLine("\n===== MENU DE EJERCICIOS =====");
+            Console.WriteLine("1. Cuadrado hueco");
+            Console.WriteLine("2. Triangulo invertido");
+            Console.WriteLine("3. Piramide centrada");
+            Console.WriteLine("4. Salir");
+            Console.Write("Seleccione una opcion: ");
+
+            opcion = int.Parse(Console.ReadLine());
+
+            switch (opcion) { 
+
+            }
+                Console.WriteLine(" cuadrado hueco");
 
         for (int fila = 0; fila < 5; fila++)
         {
@@ -25,7 +42,7 @@ class Program
 
         Console.WriteLine();
 
-      
+            Console.WriteLine("Triangulo invertido");
 
         for (int fila = 5; fila >= 1; fila--)
         {
@@ -39,9 +56,7 @@ class Program
 
         Console.WriteLine();
 
-        
-
-
+               Console.WriteLine("Piramide centrada");
         for (int fila = 1; fila <= 5; fila++)
         {
             for (int espacio = 0; espacio < 5 - fila; espacio++)
