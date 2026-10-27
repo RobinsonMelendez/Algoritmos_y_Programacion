@@ -1,26 +1,32 @@
 using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace sistemas2
-{
+      {
     internal class Program
-    {
+            {
         static void Main(string[] args)
         {
             int cantidadArchivos = 0;
             do
             {
                 Console.WriteLine("Ingrese la cantidad de archivos a descargar: ");
+
+                
                 if (!int.TryParse(Console.ReadLine(), out cantidadArchivos))
                 {
                     cantidadArchivos = 0;
                 }
             } while (cantidadArchivos <= 0);
 
-            // 1. Solicitar el espacio total disponible en disco (en MB) usando do-while
+
+            
+
+            
             double espacioDisponible = 0;
             do
             {
@@ -28,6 +34,8 @@ namespace sistemas2
                 if (!double.TryParse(Console.ReadLine(), out espacioDisponible))
                 {
                     espacioDisponible = 0;
+
+                    
                 }
             } while (espacioDisponible <= 0);
 
@@ -60,18 +68,15 @@ namespace sistemas2
                     Console.WriteLine(">> Tamaño inválido. Archivo omitido");
                     continue;
                 }
-
-                // 1. Verificar si el archivo cabe en el espacio restante
                 if (tamanio > espacioDisponible)
                 {
                     Console.WriteLine(">> Espacio insuficiente en disco. Descarga detenida.");
                     break;
                 }
 
-                // Restar el tamaño del espacio disponible
+            
                 espacioDisponible -= tamanio;
 
-                // 3. Clasificar cada archivo descargado por tamaño
                 string categoria = "";
                 if (tamanio < 1)
                 {
@@ -92,10 +97,20 @@ namespace sistemas2
                 totalMB += tamanio;
             }
 
+
+
+            
             Console.WriteLine("\n======= RESUMEN DE DESCARGA =======");
+            
             Console.WriteLine($"Archivos Descargados: {archivosDescargados}");
+
+            
             Console.WriteLine($"Total descargado: {totalMB} MB");
+
+            
             Console.WriteLine($"Espacio restante en disco: {espacioDisponible} MB");
+
+            
             Console.WriteLine("===================================================");
         }
     }
