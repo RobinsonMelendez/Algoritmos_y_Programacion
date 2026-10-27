@@ -39,6 +39,8 @@ class Program
 
         Console.WriteLine();
 
+        
+
 
         for (int fila = 1; fila <= 5; fila++)
         {
